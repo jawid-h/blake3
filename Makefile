@@ -60,7 +60,7 @@ prepare-binaries: $(TS_OUT)
 	git push -u origin generate-binary -f
 	git checkout -
 
-prepare-binaries-nogit:
+prepare-binaries-nogit: $(TS_OUT)
 	./node_modules/.bin/tsc
 	node dist/build/generate-tasks
 
