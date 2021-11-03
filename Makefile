@@ -66,5 +66,6 @@ prepare-binaries-nogit: $(TS_OUT)
 
 patch-loader:
 	node patchLoader
+	touch ./dist/wasm/web/.npmignore
 
 .PHONY: all clean prepare fmt fmt-rs fmt-ts prepare-binaries publish
