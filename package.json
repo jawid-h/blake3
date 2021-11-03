@@ -14,7 +14,6 @@
   "main": "./dist/index",
   "scripts": {
     "install": "node -e \"try{require('./dist/build/install')}catch(e){}\"",
-    "prepack": "make clean && make MODE=release && npm test && rimraf dist/native.node",
     "test": "mocha --require source-map-support/register --recursive \"dist/**/*.test.js\" --timeout 5000",
     "fmt": "make fmt",
     "compile": "tsc && tsc -p tsconfig.esm.json && node dist/build/add-js-extensions",
