@@ -60,4 +60,11 @@ prepare-binaries: $(TS_OUT)
 	git push -u origin generate-binary -f
 	git checkout -
 
+prepare-binaries-nogit:
+	./node_modules/.bin/tsc
+	node dist/build/generate-tasks
+
+patch-loader:
+	node patchLoader
+
 .PHONY: all clean prepare fmt fmt-rs fmt-ts prepare-binaries publish

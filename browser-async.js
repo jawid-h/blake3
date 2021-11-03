@@ -1,6 +1,6 @@
-import { provideWasm } from './esm/browser/wasm.js';
-import * as wasm from './dist/wasm/web/blake3_js.js';
-import * as blake3 from './esm/browser/index.js';
+const { provideWasm } = require('./esm/browser/wasm.js');
+const loadWasm = require('./dist/wasm/web/blake3_js.js');
+const blake3 = require('./esm/browser/index.js');
 
 let cached;
 
@@ -8,13 +8,14 @@ let cached;
  * Manually loads the WebAssembly module, returning a promise that resolves
  * to the BLAKE3 implementation once available.
  */
-export default function load(module) {
+module.exports = async function load() {
   if (!cached) {
-    cached = wasm.default(module).then(() => {
-      provideWasm(wasm);
-      return blake3;
-    });
+    await loadWasm.init();
+
+    provideWasm(loadWasm);
+
+    cached = blake3;
   }
 
   return cached;
-}
+};

@@ -18,7 +18,8 @@
     "test": "mocha --require source-map-support/register --recursive \"dist/**/*.test.js\" --timeout 5000",
     "fmt": "make fmt",
     "compile": "tsc && tsc -p tsconfig.esm.json && node dist/build/add-js-extensions",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "prepare": "make clean && make prepare-binaries-nogit && make patch-loader"
   },
   "repository": {
     "type": "git",
