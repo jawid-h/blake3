@@ -37,7 +37,7 @@ jobs:
       - run: 'mv rs/native/index.node dist/${{ matrix.os }}-102.node'
       - uses: actions/setup-node@v1
         with:
-          node-version: v16.12.0
+          node-version: v16.13.0
       - shell: powershell
         name: use npm 6 on node 15
         run: npm install -g npm@6
